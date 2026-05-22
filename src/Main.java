@@ -17,5 +17,11 @@ public class Main {
         );
 
         IPLService.matchesWonByTeams();
+
+        System.out.println(
+                "\n3. Extra Runs Conceded in 2016"
+        );
+
+        IPLService.extraRuns2016();
     }
 }

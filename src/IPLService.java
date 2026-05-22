@@ -17,8 +17,6 @@ public class IPLService {
         executeAndPrint(query);
     }
 
-
-    // 2. Matches won by all teams
     public static void matchesWonByTeams() {
 
         String query = """
@@ -28,6 +26,22 @@ public class IPLService {
                 WHERE winner IS NOT NULL
                 GROUP BY winner
                 ORDER BY wins DESC;
+                """;
+
+        executeAndPrint(query);
+    }
+
+    public static void extraRuns2016() {
+
+        String query = """
+                SELECT d.bowling_team,
+                       SUM(d.extra_runs) AS extra_runs
+                FROM deliveries d
+                JOIN matches m
+                ON d.match_id = m.id
+                WHERE m.season = 2016
+                GROUP BY d.bowling_team
+                ORDER BY extra_runs DESC;
                 """;
 
         executeAndPrint(query);
