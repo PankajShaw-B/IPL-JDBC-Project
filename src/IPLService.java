@@ -18,6 +18,21 @@ public class IPLService {
     }
 
 
+    // 2. Matches won by all teams
+    public static void matchesWonByTeams() {
+
+        String query = """
+                SELECT winner,
+                       COUNT(*) AS wins
+                FROM matches
+                WHERE winner IS NOT NULL
+                GROUP BY winner
+                ORDER BY wins DESC;
+                """;
+
+        executeAndPrint(query);
+    }
+
     public static void executeAndPrint(String query) {
 
         try (

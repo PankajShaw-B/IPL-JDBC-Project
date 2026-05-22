@@ -11,5 +11,11 @@ public class Main {
         );
 
         IPLService.matchesPlayedPerYear();
+
+        System.out.println(
+                "\n2. Matches Won By Teams"
+        );
+
+        IPLService.matchesWonByTeams();
     }
 }
