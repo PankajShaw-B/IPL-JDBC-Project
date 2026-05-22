@@ -47,6 +47,28 @@ public class IPLService {
         executeAndPrint(query);
     }
 
+    public static void topEconomicalBowlers2015() {
+
+        String query = """
+                SELECT d.bowler,
+                       ROUND(
+                           SUM(d.total_runs) * 6.0
+                           / COUNT(d.ball),
+                           2
+                       ) AS economy
+                FROM deliveries d
+                JOIN matches m
+                ON d.match_id = m.id
+                WHERE m.season = 2015
+                GROUP BY d.bowler
+                HAVING COUNT(d.ball) >= 60
+                ORDER BY economy ASC
+                LIMIT 10;
+                """;
+
+        executeAndPrint(query);
+    }
+
     public static void executeAndPrint(String query) {
 
         try (

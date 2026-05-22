@@ -23,5 +23,11 @@ public class Main {
         );
 
         IPLService.extraRuns2016();
+
+        System.out.println(
+                "\n4. Top Economical Bowlers 2015"
+        );
+
+        IPLService.topEconomicalBowlers2015();
     }
 }
